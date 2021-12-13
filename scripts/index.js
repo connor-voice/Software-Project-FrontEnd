@@ -24,6 +24,7 @@ document.querySelector("#inputForms").addEventListener("submit", function(event)
         form.reset();
         form.name.focus();
         console.log(result);
+        getChocs();
     }).catch(err => console.error(err));
 })
 
@@ -39,7 +40,7 @@ const getChocs = () => {
 
             const chocCard = document.createElement("div");
             //chocChard.style = `background-color: #5cdb9`;
-            chocCard.classList.add("card");
+            chocCard.classList.add("card", "col-lg-5", "col-sm-5");
 
             const chocBody = document.createElement("div");
             chocBody.classList.add("card-body");
@@ -51,12 +52,12 @@ const getChocs = () => {
 
             const chocPrice = document.createElement("h5");
             chocPrice.classList.add("card-price");
-            chocPrice.innerText = "£" + choc.price;
+            chocPrice.innerText = "£" + choc.price.toFixed(2);
             chocBody.appendChild(chocPrice);
 
             const chocQuantity = document.createElement("h5");
             chocQuantity.classList.add("card-quantity");
-            chocQuantity.innerText = "Amount in stock: " +choc.quantity;
+            chocQuantity.innerText = "Amount in stock: " + choc.quantity;
             chocBody.appendChild(chocQuantity);
 
             const chocDelete = document.createElement("button");
@@ -67,6 +68,17 @@ const getChocs = () => {
                 .then(result => getChocs())
                 .catch(err => console.error(err))
             });
+
+            const chocUpdate = document.createElement("button");
+            chocUpdate.innerText = "Update";
+            chocUpdate.classList.add("btn", "btn-dark", "updateBtn");
+            chocUpdate.addEventListener("click", () => {
+                axios.put(`http://localhost:8080/replace/${choc.id}`)
+                .then(result => updateChoc())
+                .catch(error => console.error(error))
+            });
+
+            chocBody.appendChild(chocUpdate);
             chocBody.appendChild(chocDelete);
             chocCard.appendChild(chocBody);
             chocCol.appendChild(chocCard);
