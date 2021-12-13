@@ -18,7 +18,7 @@ html {
     background-color: #379683;
     border-radius: 50px 50px 50px 50px;
     margin-right: 5%;
-    margin-left: 5%;
+    /* margin-left: 2px; */
 }
 
 #postAreaTop {
@@ -92,10 +92,21 @@ html {
 
 #cardArea {
     text-align: center;
-    background-color: #379683;
+    background-color: #5cdb95;
 }
 
 #cardForm {
     color: white;
     background-color: #36796b;
+}
+
+.card {
+    border-radius: 50px 50px 50px 50px;
+    background-color: #379683;
+    border-style: none;
+    margin-bottom: 5px;
+}
+
+.updateBtn {
+    margin-right: 5px;
 }
