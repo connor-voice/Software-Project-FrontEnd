@@ -14,12 +14,8 @@
 
 <body>
     <main class="container-fluid">
-        <div id="cardArea" class="col-7">
-            <form id="cardForm">
-                <h1> test</h1>
-            </form>
-        </div>
-        <div id="postArea" class="col-3">
+        <div class="row" id="chocRow"> 
+        <div id="postArea" class="col-sm-9 col-lg-3 col-md-9">
             <section id="postAreaTop">
                 <h2 id="inputFormTitle">Create a Chocolate</h2>
             </section>
@@ -40,7 +36,7 @@
                     <br>
 
                     <label for="chocPrice" class="form-label">Price:</label>
-                    <input type="number" id="chocPrice" name="price" class="form-control">
+                    <input type="number" step ="0.01" id="chocPrice" name="price" class="form-control">
                     <br>
 
                     <label for="chocSize" class="form-label">Size:</label>
@@ -66,7 +62,14 @@
     
             </div>
 
-
+            <div class="col">
+                <div id="cardArea" class="col-7">
+                 <form id="cardForm">
+                     <h1> test</h1>
+                 </form>
+                </div>
+            </div>
+        </div>
     </main>
 
 
