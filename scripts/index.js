@@ -62,7 +62,7 @@ const getChocs = () => {
 
             const chocDelete = document.createElement("button");
             chocDelete.innerText = "Delete";
-            chocDelete.classList.add("btn", "btn-dark");
+            chocDelete.classList.add("btn", "btn-danger");
             chocDelete.addEventListener("click", () => {
                 axios.delete(`http://localhost:8080/remove/${choc.id}`)
                 .then(result => getChocs())
@@ -73,9 +73,66 @@ const getChocs = () => {
             chocUpdate.innerText = "Update";
             chocUpdate.classList.add("btn", "btn-dark", "updateBtn");
             chocUpdate.addEventListener("click", () => {
-                axios.put(`http://localhost:8080/replace/${choc.id}`)
-                .then(result => updateChoc())
-                .catch(error => console.error(error))
+                const modal = document.getElementById("myModal");
+
+                const span = document.getElementsByClassName("close")[0];
+
+                modal.style.display = "block";
+
+                const upName = document.getElementById("chocNameUp");
+                const upBrand = document.getElementById("chocBrandUp");
+                const upPrice = document.getElementById("chocPriceUp");
+                const upSize = document.getElementById("chocSizeUp");
+                const upQuantity = document.getElementById("chocQuantityUp");
+
+                upName.value = `${choc.name}`;
+                upBrand.value = `${choc.brand}`;
+                upPrice.value = `${choc.price}`;
+                upSize.value = `${choc.size}`;
+                upQuantity.value = `${choc.quantity}`;
+
+                globalThis.chocId = `${choc.id}`;
+
+
+                document.querySelector("#updateForms").addEventListener("submit", function(event) {
+                    event.preventDefault();
+                            
+                    console.log("THIS", this);
+                    const form = this;
+                    
+                    const data = {
+                        name: form.name.value,
+                        brand: form.brand.value,
+                        price: form.price.value,
+                        size: form.size.value,
+                        quantity: form.quantity.value,
+                    };
+                    
+                    console.log("DATA", data);
+                    
+                    axios.put(`http://localhost:8080/replace/${chocId}`, data)
+                    
+                    .then(result2 => {
+                        form.reset();
+                        form.name.focus();
+                        console.log(result2);
+                        modal.style.display = "none";
+                        getChocs();
+                    }).catch(err => console.error(err));
+                })
+
+                
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                     }
+                }
             });
 
             chocBody.appendChild(chocUpdate);
@@ -89,3 +146,5 @@ const getChocs = () => {
 }
 
 getChocs();
+
+
