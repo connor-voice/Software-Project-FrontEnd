@@ -41,6 +41,7 @@ const getChocs = () => {
             const chocCard = document.createElement("div");
             //chocChard.style = `background-color: #5cdb9`;
             chocCard.classList.add("card", "col-lg-5", "col-sm-5");
+            chocCard.id = "stfuVondan";
 
             const chocBody = document.createElement("div");
             chocBody.classList.add("card-body");
@@ -67,7 +68,7 @@ const getChocs = () => {
                 axios.delete(`http://localhost:8080/remove/${choc.id}`)
                 .then(result => getChocs())
                 .catch(err => console.error(err))
-            });
+            }); 
 
             const chocUpdate = document.createElement("button");
             chocUpdate.innerText = "Update";
