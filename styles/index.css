@@ -17,7 +17,8 @@ html {
     background-color: rgb(68, 77, 77);
     background-color: #2B7A78;
     border-radius: 50px 50px 50px 50px;
-    margin-right: 5%;
+    margin: 0 auto auto 0;
+    
     /* margin-left: 2px; */
 }
 
@@ -85,11 +86,6 @@ html {
     padding-top: 5%;
 }
 
-#cardArea {
-    text-align: center;
-    background-color: #3AAFA9;
-}
-
 #cardForm {
     color: #DEF2F1;
     background-color: #36796b;
@@ -100,6 +96,8 @@ html {
     background-color: #2B7A78;
     border-style: none;
     margin-bottom: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .updateBtn {
@@ -249,4 +247,21 @@ html {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.col {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+#cardArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    text-align: center;
+    background-color: #3AAFA9;
 }
