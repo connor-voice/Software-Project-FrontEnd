@@ -40,8 +40,8 @@ const getChocs = () => {
 
             const chocCard = document.createElement("div");
             //chocChard.style = `background-color: #5cdb9`;
-            chocCard.classList.add("card", "col-lg-5", "col-sm-5");
-            chocCard.id = "stfuVondan";
+            chocCard.classList.add("card");
+            chocCard.id = "cardy";
 
             const chocBody = document.createElement("div");
             chocBody.classList.add("card-body");
